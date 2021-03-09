@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bug1024.seckill.dao.SeckillItemDao">
+    <select id="getSeckillItems"  resultType="SeckillItem" parameterType="map">
+        select * from seckill_item limit #{start},#{end}
+    </select>
+
+    <select id="getItemsNum"  resultType="integer" >
+        select count(*) from seckill_item
+    </select>
+
+    <select id="getSeckillItem" resultType="SeckillItem" parameterType="integer">
+        select * from seckill_item where id = #{id}
+    </select>
+
+    <update id="stockSub"   parameterType="integer">
+        update seckill_item set number=number-1 where id = #{seckillItemId}
+    </update>
+</mapper>
